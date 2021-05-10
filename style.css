@@ -1,0 +1,439 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+button {
+  background: 0 0;
+  cursor: pointer;
+  border: none;
+}
+
+.wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.content {
+    width: 70%;
+    height: 95%;
+    margin: 0 auto;
+    margin-top: 10px;
+    position: absolute;
+/*     z-index: 1; */
+/*     background-color: white; */
+}
+
+#canvas1 {
+    background-color : black; 
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+
+header{
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+/*   background-color: DodgerBlue; */
+}
+
+
+.getApp {
+  margin: 0;
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+/*   bottom: 0; */
+  color: white;
+/*   background-color: green; */
+}
+
+.getApp h4 {
+  padding-top: 30px;
+}
+
+.getApp span{
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.getApp a{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* .getApp span a {
+  margin-top: 3px;
+  margin-right: 3px;
+}*/
+
+.getApp span p {
+  margin-left: 5px;
+} 
+
+.logo {
+  width: 25%;
+  height: 100%;
+/*   background-color: black; */
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+
+.update {
+  width: 25%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+/*   bottom: 0; */
+  color: white;
+/*   background-color: black; */
+}
+
+.update h4{
+  padding-top: 30px;
+}
+
+.update a{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.update span{
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  font-size: 17px;
+}
+
+.update span p {
+  margin-left: 5px;
+}
+
+.playground {
+  width: 100%;
+  height: 75%;
+  background-color: white;
+  border-radius: 25px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  padding-top: 20px;
+  height: 65px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.title-image {
+  width: 600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(https://cdn.glitch.com/15416f45-3c2a-4cd3-81d9-bbd5a79b3b0b%2Fpngaaa.com-120230.png?v=1620065362923);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-shadow: 0 -1px 0 #fffa6d, 
+    #001b51 3px 0 0, 
+    #001b51 2.83487px 0.981584px 0, 
+    #001b51 2.35766px 1.85511px 0, 
+    #001b51 1.62091px 2.52441px 0, 
+    #001b51 0.705713px 2.91581px 0, 
+    #001b51 -0.287171px 2.98622px 0, 
+    #001b51 -1.24844px 2.72789px 0, 
+    #001b51 -2.07227px 2.16926px 0, 
+    #001b51 -2.66798px 1.37182px 0, 
+    #001b51 -2.96998px 0.42336px 0, 
+    #001b51 -2.94502px -0.571704px 0, 
+    #001b51 -2.59586px -1.50383px 0, 
+    #001b51 -1.96093px -2.27041px 0, 
+    #001b51 -1.11013px -2.78704px 0, 
+    #001b51 -0.137119px -2.99686px 0, 
+    #001b51 0.850987px -2.87677px 0, 
+    #001b51 1.74541px -2.43999px 0, 
+    #001b51 2.44769px -1.73459px 0, 
+    #001b51 2.88051px -0.838247px 0;
+}
+
+.title-image h2 {
+  padding: 0 5px;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: nunitoblack;
+  color: #ffbf00;
+}
+
+.playground_content {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.home {
+  justify-content: space-around;
+  min-height: 0;
+}
+
+.player {
+  width: 450px;
+  margin: 30px 0 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+
+.information strong {
+  margin-bottom: 10px;
+  color: #1e6ebe;
+}
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  position: relative;
+  margin: 0;
+}
+
+.ava {
+  width: 100%;
+  height: 170px;
+  position: absolute;
+  bottom: 0;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.ava-img {
+    background-image: url(/img/avatar.png);
+}
+
+.avatar button {
+  font-size: 20px;
+  color: #fff;
+}
+
+.ava-select {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: -4px;
+  top: 0;
+  background-color: rgb(70, 116, 241);
+  border: 4px #fff solid;
+  border-radius: 50%;
+}
+
+.information .form{
+  margin: 0 0 0;
+  display: table;
+  border-spacing: 10px;
+}
+
+.action {
+  width: 100%;
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-room {
+  background-color: #13bafe;
+  border-top-color: #66cfff;
+  border-bottom-color: #248aed;
+}
+
+.btn-play {
+  background-color: #ffbf00;
+  border-top-color: #ffe100;
+  border-bottom-color: #f88700;
+}
+
+.btn-draw {
+  background-color: #ff5100;
+    border-top-color: #ff9900;
+    border-bottom-color: #f83200;
+}
+
+.btn-room strong, .btn-play strong,
+.btn-draw strong {
+  margin: 0 15px 0 0;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.btn-room span, .btn-play span,
+.btn-draw span {
+  margin: 0 20px 0 10px;
+  font-size: 18px;
+}
+
+.btn-room, .btn-play, .btn-draw {
+  width: 140px;
+  height: 35px;
+  border-radius: 34px;
+  border-top: 2px transparent solid;
+  border-bottom: 2px transparent solid;
+  box-shadow: 0 0 0 5px #002043, 0 0 0 6px #7c92b0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.action button {
+  margin: 0 15px 20px;
+}
+
+
+
+.username {
+  display: table-row;
+}
+
+.form .username strong {
+  color: #8d8989;
+  font-size: 15px;
+}
+
+.form .username span {
+  font-weight: 900;
+  font-size: 25px;
+  text-transform: none;
+  line-height: 1;
+  color: #4a6aa5;
+  font-size: 24px;
+  margin: 0 10px 0 0;
+}
+
+.text input{
+  width: 150px;
+  margin-left: 15px;
+  border-radius: 10px;
+  text-align: left;
+  padding: 0 10px;
+  font-size: 18px;
+  border: 2px #868d96 solid;
+}
+
+.or {
+  width: 55px;
+  justify-content: center;
+}
+
+.login {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+/*   background-color: black; */
+}
+
+footer .draw-icon {
+  width: 100px;
+  height: 100%;
+  background-image: url(https://cdn.glitch.com/15416f45-3c2a-4cd3-81d9-bbd5a79b3b0b%2Ffly-boy.png?v=1619968231155);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+footer nav {
+  display: flex;
+  flex-direction: row;
+}
+
+footer nav a{
+  font-size: 10px;
+}
+
+footer nav .symbol:before {
+    content: '|';
+    margin: 0 7px;
+}
+
+footer .follow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer .follow a {
+  width: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+@media only screen and (max-width: 740px) {
+  .content {
+    display: none;
+  }
+}
