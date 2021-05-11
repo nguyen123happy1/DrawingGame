@@ -100,11 +100,12 @@ header{
   justify-content: center;
 }
 
-.logo img {
-  width: 100%;
-  height: 100%; 
+.logo img{
+  height:100%;
 }
-
+.logo{
+  text-align: center;
+}
 .update {
   width: 25%;
   height: 100%;
