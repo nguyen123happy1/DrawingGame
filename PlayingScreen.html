@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Socket.IO chat</title>
+    <style>
+      /* body {height: 100%; margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; } */
+
+      /* #form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); } */
+      /* #input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 1rem; } */
+      /* #input:focus { outline: none; } */
+      #form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
+
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages > li { padding: 0.5rem 1rem; }
+      #messages > li:nth-child(odd) { background: #efefef; }
+    </style>
+  </head>
+
+  <body style="height: 100%; background-size: cover; background-attachment: fixed; background-image: url('https://cdn.dribbble.com/users/722246/screenshots/2105878/attachments/380895/Bays_Nights.jpg') ;">
+
+    <div class="container" style="height: 100%; width: 100%; margin-top: 50px;">
+
+      <!-------------------------------- PLAYER LIST -------------------------------->
+      <div style="background-color: darkgray; width: 250px; height: 560px; margin-left: 160px; border-radius: 2rem;  float: left;">
+        Player list
+      </div>
+
+      <div style=" width: 600px; margin-left:420px; ">
+        <!-------------------------------- DASHBOARD -------------------------------->
+        <div style="background-color: darkgray; border-radius: 2rem;width: 600px; height: 340px;">
+          DASHBOARD
+        </div>
+
+        <!-------------------------------- CHATBOX -------------------------------->
+        <div style="width: 600px; height: 190px; background-color: white; margin-top: 30px; border-radius: 2rem; ">
+          
+          <ul id="messages" style=" overflow: hidden; overflow-y: scroll; height: 80%; margin-top: 5px; border-radius: 2rem;"></ul>
+          
+          <form id="form" action="" style="height: 20%; margin-left: 20px; margin-top: 2px;">
+            <input id="input" autocomplete="off" style="width: 85%; height: 50%; border-radius: 5px; border-color: rgb(60, 137, 189); "/>
+            <button>Send</button>
+          </form>
+
+          <script src="/socket.io/socket.io.js"></script>
+          <script>
+            var socket = io();
+            var form = document.getElementById('form');
+            var input = document.getElementById('input');
+            var messages = document.getElementById('messages');
+
+            // When press enter or click Send button:
+            form.addEventListener('submit', function(e) {
+              e.preventDefault();
+              if (input.value) {
+                socket.emit('chat message', input.value);
+                input.value = '';
+              }
+            });
+
+            // Print messages for every client
+            socket.on('chat message', function(msg) {
+              // console.log("Mess: ",msg)
+              var item = document.createElement('li');
+              item.textContent = msg;
+              messages.appendChild(item);
+              window.scrollTo(0, document.body.scrollHeight);
+            });
+
+          </script>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
