@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <header>
+
+            </header>
+            <div class="title">
+                <span class="title-image">
+                    <h2>LOGIN</h2>
+                </span>
+            </div>
+            <form class="login_form" name="login" method="POST" onsubmit="return validated()">
+                <p>Username</p>
+                <input type="text" name="user">
+                <p>Password</p>
+                <input type="password" name="pass"> <br>
+                <span id="error" style="color:red"></span><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script language="javascript">
+        var loginuser = "admin";
+        var loginpass = "1234";
+        var user = document.forms['login']['user'];
+        var pass = document.forms['login']['pass'];
+        var error_line = document.getElementById('error');
+        function validated() {
+            if (user.value.length == 0 | pass.value.length == 0) {
+                error_line.innerHTML = "Username or password is missing";
+                return false;
+            }
+            else if (user.value != loginuser | pass.value != loginpass) {
+                error_line.innerHTML = "Username or password is wrong";
+                return false;
+            }
+            else {
+                sessionStorage.setItem("username", loginuser);
+                sessionStorage.setItem("pass", loginpass);
+                Redirect();
+                return false;
+            }
+
+        }
+        function Redirect() {
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+
+
+</html>

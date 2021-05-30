@@ -160,6 +160,7 @@ header{
 }
 
 .playground {
+  font-family: 'Muli', sans-serif;
   width: 100%;
   height: 75%;
   background-color: white;
@@ -396,13 +397,7 @@ header{
   justify-content: center;
 }
 
-.login {
-  width: 450px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
+
 
 footer {
   width: 100%;
@@ -453,6 +448,40 @@ footer .follow a {
   justify-content: space-between;
   font-size: 20px;
   margin-left: 8px;
+}
+
+.login {
+  color: black;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.login_title a{
+  color: black;
+}
+.login_form {
+  padding: 20px 40px;
+
+}
+
+.login_form input{
+  height: 40px;
+  width: 350px;
+  padding: 0 5px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid blue;
+  border-radius: 8px;
+}
+.login_form button{
+  margin: 20px 0 0 0 ;
+  height: 45px;
+  width: 350px;
+  color: white;
+  background: blue;
+  border-radius: 8px;
 }
 
 @media only screen and (max-width: 740px) {
