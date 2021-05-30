@@ -106,13 +106,40 @@ animate();
 function loggedin(){
 if (sessionStorage.getItem("username")!=null){
     document.getElementById("welcome").innerHTML = "Welcome, <b>" + sessionStorage.getItem("username")+"</b>";
-    document.getElementById("options").innerHTML = "<button class = \"btn-play\" onclick = \"logout()\"><span><i class=\"fas fa-caret-right\"></i></span><strong>Log Out</strong></button>";
+    document.getElementById("form").innerHTML = "<button class = \"btn-play\" onclick = \"logout()\"><span><i class=\"fas fa-caret-right\"></i></span><strong>Log Out</strong></button>";
 }
 }
 loggedin()
 function logout(){
     sessionStorage.clear();
     window.location.href="index.html";
+}
+
+
+function validated() {
+    var loginuser = "admin";
+    var loginpass = "1234";
+    var user = document.forms['login']['user'];
+    var pass = document.forms['login']['pass'];
+    var error_line = document.getElementById('error');
+    if (user.value.length == 0 | pass.value.length == 0) {
+        error_line.innerHTML = "Username or password is missing";
+        return false;
+    }
+    else if (user.value != loginuser | pass.value != loginpass) {
+        error_line.innerHTML = "Username or password is wrong";
+        return false;
+    }
+    else {
+        sessionStorage.setItem("username", loginuser);
+        sessionStorage.setItem("pass", loginpass);
+        Redirect();
+        return false;
+    }
+
+}
+function Redirect() {
+    window.location.href = "index.html";
 }
 // function clear() {
 //     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);

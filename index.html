@@ -91,13 +91,20 @@
           </div>
           <div class="login">
             <div class="login-title">
-              <span id="welcome" style="color:black"></span>
+              <div id="welcome" style="color:black;text-align: center;"><strong>LOGIN WITH YOUR ACCOUNT</strong></div><br>
+              <div id="form">
+                <form class="login_form" name="login" method="POST" onsubmit="return validated()">
+                  <p>Username</p>
+                  <input type="text" name="user">
+                  <p>Password</p>
+                  <input type="password" name="pass"> <br>
+                  <span id="error" style="color:red"></span><br>
+                  <button type="submit">Submit</button>
+              </form>
+            </div>
             </div>
             <div class="options" id="options">
-              <button class="btn-room"><span><i class="fas fa-caret-right"></i></span> <a href="login.html"
-                  style="color:black; font-weight: bold;">Log In</a></button>
-              <!--temporary button style -->
-
+                
             </div>
             <div class="login-choice">
 
