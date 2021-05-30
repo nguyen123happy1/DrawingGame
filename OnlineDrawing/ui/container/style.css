@@ -1,0 +1,69 @@
+.container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: row;
+    background: linear-gradient(45deg, #03A9F4, #4CAF50);
+}
+
+.screen {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.areas {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: 
+    'user board'
+    'user chat'
+    'user chat';
+    grid-gap: 20px;
+}
+
+.color-picker-container {
+    text-align: center;
+    display: inline;
+    color: white;
+}
+
+.brushsize-container {
+    display: inline;
+    color: white;
+    margin-left: 12px;
+}
+
+.tools-section {
+    text-align: center;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    grid-area: user;
+    background-color: #FFF;
+    border-radius: 10px;
+}
+
+.board-container {
+    grid-area: board;
+    background: white;
+    border-radius: 10px;
+}
+
+.chat-box {
+    display: flex;
+    flex-direction: row;
+    grid-area: chat;
+    background-color: #FFF;
+    border-radius: 10px;
+}
