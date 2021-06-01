@@ -21,27 +21,29 @@ class Chat extends React.Component {
     getMessage() {
         var form = document.getElementById('form');
         var input = document.getElementById('input');
-        // var messages = document.getElementById('messages');
+        var messages = document.getElementById('messages');
+        var keyword = "kw";
 
         // When press enter or click Send button:
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             if (input.value)  {
-            console.log(input.value);
-            this.socket.emit('chat message', input.value);
-            input.value = '';
+                this.socket.emit('chat message', input.value);
+                input.value = '';
             }
         });
-
-        var messages = document.getElementById('messages');
+        
         this.socket.on('chat message', function(msg){
-            console.log("Mess: ",msg)
             var item = document.createElement('li');
             item.textContent = msg;
             messages.appendChild(item);
-            console.log(item);
             window.scrollTo(0, document.body.scrollHeight);
-            });
+
+            // Check if input == keyword
+            if(msg == keyword){
+                input.disabled = 'true';
+            }
+        });
     }
 
     render() {
@@ -49,7 +51,7 @@ class Chat extends React.Component {
             <div className = "chat">
                 <ul id="messages"></ul>    
                 <form id="form" action="">
-                    <input id="input" autocomplete="off"/>
+                    <input id="input" placeholder = "Answer here..." autocomplete="off"/>
                     <button type="submit">Send</button>
                 </form>
             </div>
