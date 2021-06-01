@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from '../board/Board';
+import Chat from '../chat/Chat';
 
 import './style.css';
 
@@ -65,7 +66,7 @@ class Container extends React.Component
 
                         {/* Chat Box */}
                         <div className="chat-box">
-
+                            <Chat></Chat>
                         </div>
                     </div>
                 </div>

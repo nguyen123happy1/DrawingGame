@@ -32,6 +32,7 @@ class Board extends React.Component {
                     root.isDrawing = false;
                 };
                 image.src = data;
+                console.log(image.src);
             }, 200)
         })
     }
