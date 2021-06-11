@@ -9,9 +9,11 @@ io.on('connection', (socket)=> {
             console.log('user disconnected');
       });
 
+
       socket.on('canvas-data', (data)=> {
             socket.broadcast.emit('canvas-data', data);
-      })
+            console.log('Canvas active');
+      });
 
       // Print messages
       socket.on('chat message', (msg) => {
@@ -21,7 +23,7 @@ io.on('connection', (socket)=> {
 
 })
 
-var server_port = process.env.YOUR_PORT || process.env.PORT || 3000;
+var server_port = process.env.YOUR_PORT || process.env.PORT || 5000;
 http.listen(server_port, () => {
     console.log("Started on : "+ server_port);
 })
