@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Board from '../board/Board';
 import Chat from '../chat/Chat';
 
