@@ -1,0 +1,445 @@
+#android{
+    margin-right: 15px;
+}
+
+#ios{
+    margin-left: 15px;
+}
+
+#listItem{
+  border: 4px solid linear-gradient(0deg, #ff0, #f0f);
+  /* border-image: linear-gradient(0deg, #ff0, #f0f) ; */
+  border-image-slice: 1;
+  border-radius: 600px;
+  background-color: whitesmoke;
+  margin-top: 15px;
+}
+
+.update > a{
+    margin-right: 15px;
+}
+
+.title > input{
+    width: 130px; 
+    height: 35px; 
+    border-radius: 10px; 
+    border-color: black; 
+    border-width: 5px; 
+    margin: 15px; 
+    margin-left: 140px;
+}
+.title > h4{
+    text-decoration: underline; 
+    text-decoration-style: wavy ;
+    text-decoration-color: blue; 
+    text-align: center; 
+    margin-right: 400px; 
+    font-size: 50px; 
+    font-family: Comic Sans MS; 
+    color: rgb(243, 228, 23);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: 'Muli', sans-serif;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+
+button {
+  background: 0 0;
+  cursor: pointer;
+  border: none;
+}
+
+.wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-image: url('https://cdn.glitch.com/15416f45-3c2a-4cd3-81d9-bbd5a79b3b0b%2Ftelescope.jpg?v=1619935677886');
+}
+
+.content {
+    width: 70%;
+    height: 95%;
+    position: absolute;
+  background-color: #f83200;
+}
+
+header{
+  width: 100%;
+  height: 10%;
+  /* display: flex; */
+  justify-content: space-between;
+/*   background-color: DodgerBlue; */
+}
+
+.getApp span{
+  padding-top: 1px;
+  display: flex;
+  flex-direction: row;
+}
+
+.getApp a{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logo {
+  width: 25%;
+  height: 100%;
+/*   background-color: black; */
+  align-items: center;
+  justify-content: center;
+  background-image: url('https://cdn.glitch.com/15416f45-3c2a-4cd3-81d9-bbd5a79b3b0b%2Ffly-boy.png?v=1619968231155');
+}
+
+.logo img{
+  height:100%;
+}
+.logo{
+  text-align: center;
+}
+
+.circle{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid#001b51;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 0 5px 0;
+}
+
+.vertical-line{
+  display: inline-block;
+  border-left: 4px solid #001b51;
+  height: 40%;
+}
+.update {
+  width: 25%;
+  height: 10%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+/*   bottom: 0; */
+  color: white;
+/*   background-color: black; */
+}
+
+.update h4{
+  padding-top: 30px;
+}
+
+.update a{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.update span{
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  font-size: 17px;
+}
+
+.update span p {
+  margin-left: 5px;
+}
+
+.playground {
+  font-family: 'Muli', sans-serif;
+  width: 90%;
+  height: 75%;
+  background-color: white;
+  border-radius: 25px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  padding-top: 20px;
+  height: 65px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.playground_content {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.home {
+  justify-content: space-around;
+  min-height: 0;
+}
+
+.player {
+  width: 450px;
+  margin: 30px 0 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+
+.information strong {
+  margin-bottom: 10px;
+  color: #1e6ebe;
+}
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  position: relative;
+  margin: 0;
+}
+
+.ava {
+  width: 100%;
+  height: 170px;
+  position: absolute;
+  bottom: 0;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.avatar button {
+  font-size: 20px;
+  color: #fff;
+}
+
+.ava-select {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: -4px;
+  top: 0;
+  background-color: rgb(70, 116, 241);
+  border: 4px #fff solid;
+  border-radius: 50%;
+}
+
+.information .form{
+  margin: 0 0 0;
+  display: table;
+  border-spacing: 10px;
+}
+
+.action {
+  width: 100%;
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-room {
+  background-color: #13bafe;
+  border-top-color: #66cfff;
+  border-bottom-color: #248aed;
+}
+
+.btn-play {
+  background-color: #ffbf00;
+  border-top-color: #ffe100;
+  border-bottom-color: #f88700;
+}
+
+.btn-draw {
+  background-color: #ff5100;
+    border-top-color: #ff9900;
+    border-bottom-color: #f83200;
+}
+
+.btn-room strong, .btn-play strong,
+.btn-draw strong {
+  margin: 0 15px 0 0;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.btn-room span, .btn-play span,
+.btn-draw span {
+  margin: 0 20px 0 10px;
+  font-size: 18px;
+}
+
+.btn-room, .btn-play, .btn-draw {
+  width: 140px;
+  height: 35px;
+  border-radius: 34px;
+  border-top: 2px transparent solid;
+  border-bottom: 2px transparent solid;
+  box-shadow: 0 0 0 5px #002043, 0 0 0 6px #7c92b0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.action button {
+  margin: 0 15px 20px;
+}
+
+
+
+.username {
+  display: table-row;
+}
+
+.form .username strong {
+  color: #8d8989;
+  font-size: 15px;
+}
+
+.form .username span {
+  font-weight: 900;
+  font-size: 25px;
+  text-transform: none;
+  line-height: 1;
+  color: #4a6aa5;
+  font-size: 24px;
+  margin: 0 10px 0 0;
+}
+
+.text input{
+  width: 150px;
+  margin-left: 15px;
+  border-radius: 10px;
+  text-align: left;
+  padding: 0 10px;
+  font-size: 18px;
+  border: 2px #868d96 solid;
+}
+
+.or {
+  width: 55px;
+  justify-content: center;
+}
+
+
+
+footer {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+/*   background-color: black; */
+}
+
+footer .draw-icon {
+  width: 100px;
+  height: 100%;
+  background-image: url(https://cdn.glitch.com/15416f45-3c2a-4cd3-81d9-bbd5a79b3b0b%2Ffly-boy.png?v=1619968231155);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+footer nav {
+  display: flex;
+  flex-direction: row;
+}
+
+footer nav a{
+  font-size: 10px;
+}
+
+footer nav .symbol:before {
+    content: '|';
+    margin: 0 7px;
+}
+
+footer .follow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer .follow a {
+  width: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+.login {
+  color: black;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login_form {
+  padding: 20px 40px;
+
+}
+
+.login_form input{
+  height: 40px;
+  width: 350px;
+  padding: 0 5px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid blue;
+  border-radius: 8px;
+}
+.login_form button{
+  margin: 20px 0 0 0 ;
+  height: 45px;
+  width: 350px;
+  color: white;
+  background: blue;
+  border-radius: 8px;
+}
+
+@media only screen and (max-width: 740px) {
+  .content {
+    display: none;
+  }
+}
