@@ -57,6 +57,9 @@ button {
   cursor: pointer;
   border: none;
 }
+button:hover{
+  color: white;
+}
 
 .wrapper{
   width: 100%;

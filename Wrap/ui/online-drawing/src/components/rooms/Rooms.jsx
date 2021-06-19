@@ -44,6 +44,12 @@ class Rooms extends React.Component{
   onSubmit = () => {
     // data.push
   }
+  logout(e){
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("name");
+    window.location.href = "/";
+  }
+
 
     render(){
       return(
@@ -52,6 +58,7 @@ class Rooms extends React.Component{
                 <Header style = {{backgroundColor:'gray'}}>
                   <Avatar size="large" icon={<UserOutlined/>} style={{float: 'left', marginTop:'10px'}} />
                   <Title level={4} style = {{color:'blue', marginTop: '15px'}}>{title_name}<h6>{title_id}</h6></Title>
+                  <button onClick={this.logout}>Log Out</button>
                 </Header>
 
                 <Content>
