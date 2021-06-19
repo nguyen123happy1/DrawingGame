@@ -1,5 +1,6 @@
 import React from 'react';
 import io from 'socket.io-client';
+import axios from 'axios';
 import './style.css';
 import 'antd/dist/antd.css';
 import {Layout, Input, Typography, List, Select, Avatar, Drawer, Button, InputNumber, Row } from 'antd';
@@ -13,21 +14,36 @@ const {Title} = Typography;
 const { Header, Content, Footer } = Layout;
 var title_name= localStorage.getItem("name")? localStorage.getItem("name"): "User";
 var title_id= localStorage.getItem("user_id")? localStorage.getItem("user_id"): "User_id";
-
+const onChangeCap = (values)=>{
+  this.setState({capacity:values});
+}
 const data = [];
-for (let i = 0; i < 100; i++) {
+ axios.get("http://localhost:5000/room/getroom").then(res=>{
+  for (let i = 0; i < res.data.length; i++) {
     data.push({
       key: i,
       id: `${i}`,
-      name: `Room ${i}`,
-      capacity: i,
-      points: 100
+      name: res.data[i].name,
+      capacity: res.data[i].capacity,
+      points: res.data[i].points
     });
   }
+ })
+
+
+// for (let i = 0; i < 100; i++) {
+//     data.push({
+//       key: i,
+//       id: `${i}`,
+//       name: `Room ${i}`,
+//       capacity: i,
+//       points: 100
+//     });
+//   }
 
 class Rooms extends React.Component{
 
-  state = { visible: false };
+  state = { visible: false,capacity:''};
 
   showDrawer = () => {
     this.setState({
@@ -37,13 +53,20 @@ class Rooms extends React.Component{
 
   onClose = () => {
     this.setState({
-      visible: false,
+      visible: false, 
     });
   };
 
   onSubmit = () => {
-    // data.push
+
+    axios.post("http://localhost:5000/room/addroom",{roomName:document.getElementById("roomName").value,capacity:document.getElementById("players").value,points: document.getElementById("points").value }).then(res=>{
+          if (res.data.success==true){
+          window.location.href = "/roomscreen";
+          }
+    })
   }
+  
+
   logout(e){
     localStorage.removeItem("user_id");
     localStorage.removeItem("name");
@@ -103,31 +126,33 @@ class Rooms extends React.Component{
                           <Button onClick={this.onSubmit} type="primary"> Submit </Button>
                         </div>
                     }>
-                      <Row> Room Name: <Input name='roomName' /> </Row>
+                      <Row> Room Name: <Input name='roomName'id='roomName'/> </Row>
                       <Row>
                           <UserOutlined /> Players
-                          <Select defaultValue='5'>
-                            <Option>5</Option>
-                            <Option>6</Option>
-                            <Option>7</Option>
-                            <Option>8</Option>
-                            <Option>9</Option>
-                            <Option>10</Option>
-                            <Option>15</Option>
-                            <Option>20</Option>
-                            <Option>30</Option>
-                            <Option>50</Option>
-                          </Select>
+                          {/* <Select defaultValue='5' onChange={onChangeCap}>
+                            <Option value="5">5</Option>
+                            <Option value="6">6</Option>
+                            <Option value="7">7</Option>
+                            <Option value="8">8</Option>
+                            <Option value="9">9</Option>
+                            <Option value="10">10</Option>
+                            <Option value="15">15</Option>
+                            <Option value="20">20</Option>
+                            <Option value="30">30</Option>
+                            <Option value="50">50</Option>
+                          </Select> */}
+                          <Input name='players'id='players'/>
                       {/* </Row>
                       <Row>  */}
                           <TrophyTwoTone twoToneColor= 'gold' /> Points 
-                          <Select style={{width:'50px'}}>
+                          {/* <Select style={{width:'50px'}} id = "pointsValue">
                             <Option>100</Option>
                             <Option>120</Option>
                             <Option>150</Option>
                             <Option>180</Option>
                             <Option>200</Option>
-                          </Select>
+                          </Select> */}
+                          <Input name='points'id='points'/>
                       </Row>
                     </Drawer>
 

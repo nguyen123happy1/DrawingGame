@@ -6,6 +6,7 @@ var io = require('socket.io')(http);
 require('./config/db')
 
 const UserRouter = require('./routes/User');
+const RoomRouter = require('./routes/Room');
 
 io.on('connection', (socket)=> {
 
@@ -30,6 +31,7 @@ io.on('connection', (socket)=> {
 app.use(bodyParser.json());
 app.use(cors());
 app.use("/user", UserRouter);
+app.use("/room", RoomRouter);
 
 
 // app.get("/login", (req, res) => {
