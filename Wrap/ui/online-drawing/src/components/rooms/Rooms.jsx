@@ -2,8 +2,8 @@ import React from 'react';
 import io from 'socket.io-client';
 import './style.css';
 import 'antd/dist/antd.css';
-import {Layout, Input, Typography, List, Select, Avatar } from 'antd';
-import {TrophyTwoTone, SmileTwoTone, UserOutlined} from '@ant-design/icons';
+import {Layout, Input, Typography, List, Select, Avatar, Drawer, Button, InputNumber, Row } from 'antd';
+import {TrophyTwoTone, SmileTwoTone, UserOutlined, PlusCircleTwoTone} from '@ant-design/icons';
 
 const onSearch = value => console.log(value);
 
@@ -25,6 +25,24 @@ for (let i = 0; i < 100; i++) {
 
 class Rooms extends React.Component{
 
+  state = { visible: false };
+
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
+  onSubmit = () => {
+    // data.push
+  }
+
     render(){
       return(
         <Layout>
@@ -35,7 +53,7 @@ class Rooms extends React.Component{
                 </Header>
 
                 <Content>
-                  <div style = {{backgroundColor: 'green', width: '80%', position:'absolute', left: '50%', transform: 'translate(-50%)', borderRadius: '20px'}}>
+                  <div style = {{backgroundColor: 'green', width: '80%', position:'absolute', left: '50%', transform: 'translate(-50%)', borderRadius: '20px', textAlign:'center'}}>
                     
                     <div style = {{height: '13%'}}>
 
@@ -67,6 +85,42 @@ class Rooms extends React.Component{
                           </a>
                         </div>
                     )} />
+
+                    <button onClick={this.showDrawer} style ={{backgroundColor: 'yellow', width:'20%', height:'50px', display:'inline-block'}}> <PlusCircleTwoTone /> New room </button>
+
+                    <Drawer title='Create new room' width={720} onClose={this.onClose} visible={this.state.visible} bodyStyle={{ paddingBottom: 80 }} footer={
+                        <div style={{ textAlign: 'right'}}>
+                          <Button onClick={this.onClose} style={{ marginRight: 8 }}> Cancel </Button>
+                          <Button onClick={this.onSubmit} type="primary"> Submit </Button>
+                        </div>
+                    }>
+                      <Row> Room Name: <Input name='roomName' /> </Row>
+                      <Row>
+                          <UserOutlined /> Players
+                          <Select defaultValue='5'>
+                            <Option>5</Option>
+                            <Option>6</Option>
+                            <Option>7</Option>
+                            <Option>8</Option>
+                            <Option>9</Option>
+                            <Option>10</Option>
+                            <Option>15</Option>
+                            <Option>20</Option>
+                            <Option>30</Option>
+                            <Option>50</Option>
+                          </Select>
+                      {/* </Row>
+                      <Row>  */}
+                          <TrophyTwoTone twoToneColor= 'gold' /> Points 
+                          <Select style={{width:'50px'}}>
+                            <Option>100</Option>
+                            <Option>120</Option>
+                            <Option>150</Option>
+                            <Option>180</Option>
+                            <Option>200</Option>
+                          </Select>
+                      </Row>
+                    </Drawer>
 
                   </div>
                 </Content>
