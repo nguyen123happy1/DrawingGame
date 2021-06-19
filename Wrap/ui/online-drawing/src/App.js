@@ -15,9 +15,11 @@ function App() {
         <Route exact path = "/login"          component = {Login} />
         <Route exact path = "/register"          component = {Register} />
         <Route exact path = "/playingscreen"  component = {PlayingScreen} />
+        
         <Route exact path = "/RoomScreen"     render={()=>{
           return localStorage.getItem("user_id")? <RoomScreen/> : <Redirect to = '/login'/>
         }} />
+
         <Route exact path = "/"    render={()=>{
           return localStorage.getItem("user_id")? <Redirect to ="/roomscreen"/> : <Login/>
         }} />

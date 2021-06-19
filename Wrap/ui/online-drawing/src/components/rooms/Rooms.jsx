@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import io from 'socket.io-client';
 import axios from 'axios';
 import './style.css';
@@ -8,42 +8,42 @@ import {TrophyTwoTone, SmileTwoTone, UserOutlined, PlusCircleTwoTone} from '@ant
 
 const onSearch = value => console.log(value);
 
-const {Option} = Select
+const {option} = Select
 const { Search } = Input;
 const {Title} = Typography;
 const { Header, Content, Footer } = Layout;
 var title_name= localStorage.getItem("name")? localStorage.getItem("name"): "User";
 var title_id= localStorage.getItem("user_id")? localStorage.getItem("user_id"): "User_id";
+
 const onChangeCap = (values)=>{
   this.setState({capacity:values});
 }
 const data = [];
- axios.get("http://localhost:5000/room/getroom").then(res=>{
-  for (let i = 0; i < res.data.length; i++) {
-    data.push({
-      key: i,
-      id: `${i}`,
-      name: res.data[i].name,
-      capacity: res.data[i].capacity,
-      points: res.data[i].points
-    });
-  }
- })
-
-
-// for (let i = 0; i < 100; i++) {
+//  axios.get("http://localhost:5000/room/getroom").then(res=>{
+//   for (let i = 0; i < res.data.length; i++) {
 //     data.push({
 //       key: i,
 //       id: `${i}`,
-//       name: `Room ${i}`,
-//       capacity: i,
-//       points: 100
+//       name: res.data[i].name,
+//       capacity: res.data[i].capacity,
+//       points: res.data[i].points
 //     });
 //   }
+//  })
+
+for (let i = 0; i < 100; i++) {
+    data.push({
+      key: i,
+      id: `${i}`,
+      name: `Room ${i}`,
+      capacity: i,
+      points: 100
+    });
+  }
 
 class Rooms extends React.Component{
 
-  state = { visible: false,capacity:''};
+  state = { visible: false };
 
   showDrawer = () => {
     this.setState({
@@ -53,7 +53,7 @@ class Rooms extends React.Component{
 
   onClose = () => {
     this.setState({
-      visible: false, 
+      visible: false,
     });
   };
 
@@ -65,7 +65,6 @@ class Rooms extends React.Component{
           }
     })
   }
-  
 
   logout(e){
     localStorage.removeItem("user_id");
@@ -81,18 +80,20 @@ class Rooms extends React.Component{
                 <Header style = {{backgroundColor:'gray'}}>
                   <Avatar size="large" icon={<UserOutlined/>} style={{float: 'left', marginTop:'10px'}} />
                   <Title level={4} style = {{color:'blue', marginTop: '15px'}}>{title_name}<h6>{title_id}</h6></Title>
+                  {/* <Title level={4} style = {{color:'blue', marginTop: '15px'}}> User </Title> */}
+                  
                   <button onClick={this.logout}>Log Out</button>
                 </Header>
 
                 <Content>
-                  <div style = {{backgroundColor: 'green', width: '80%', position:'absolute', left: '50%', transform: 'translate(-50%)', borderRadius: '20px', textAlign:'center'}}>
+                  <div style = {{backgroundColor: 'white', width: '80%', position:'absolute', left: '50%', transform: 'translate(-50%)', borderRadius: '20px', textAlign:'center'}}>
                     
                     <div style = {{height: '13%'}}>
 
                       <div style={{backgroundColor:'white', float:'left', marginLeft: '50px', marginTop: '30px', display:'flex', justifyContent:'center', alignItems:'center'}}>
                         <Select style={{width:'120px'}}>
-                          <Option >Room name</Option>
-                          <Option >Room ID</Option>
+                          <option >Room name</option>
+                          <option >Room ID</option>
                         </Select>
                         <Search placeholder="search..." style={{ width: '150px' }} allowClear onSearch={onSearch} />
                       </div>
@@ -126,33 +127,14 @@ class Rooms extends React.Component{
                           <Button onClick={this.onSubmit} type="primary"> Submit </Button>
                         </div>
                     }>
-                      <Row> Room Name: <Input name='roomName'id='roomName'/> </Row>
+                      <Row> Room Name: <Input name='roomName' id='roomName' /> </Row>
                       <Row>
                           <UserOutlined /> Players
-                          {/* <Select defaultValue='5' onChange={onChangeCap}>
-                            <Option value="5">5</Option>
-                            <Option value="6">6</Option>
-                            <Option value="7">7</Option>
-                            <Option value="8">8</Option>
-                            <Option value="9">9</Option>
-                            <Option value="10">10</Option>
-                            <Option value="15">15</Option>
-                            <Option value="20">20</Option>
-                            <Option value="30">30</Option>
-                            <Option value="50">50</Option>
-                          </Select> */}
-                          <Input name='players'id='players'/>
+                          <InputNumber min={1} max={50} defaultValue={3} name='players'id='players'/>
                       {/* </Row>
                       <Row>  */}
                           <TrophyTwoTone twoToneColor= 'gold' /> Points 
-                          {/* <Select style={{width:'50px'}} id = "pointsValue">
-                            <Option>100</Option>
-                            <Option>120</Option>
-                            <Option>150</Option>
-                            <Option>180</Option>
-                            <Option>200</Option>
-                          </Select> */}
-                          <Input name='points'id='points'/>
+                          <InputNumber min={1} max={50} defaultValue={3} name='points'id='points'/>
                       </Row>
                     </Drawer>
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import io from 'socket.io-client';
-import { useState, useEffect } from 'react';
-
+import 'antd/dist/antd.css';
 import './style.css';
+import {InfoCircleTwoTone} from '@ant-design/icons';
+import { Button, Input} from 'antd';
 
 class Chat extends React.Component {
 
@@ -26,6 +27,15 @@ class Chat extends React.Component {
 
         // When press enter or click Send button:
         form.addEventListener('submit', (e) => {
+            
+            //MUST DELETE
+            // var item = document.createElement('li');
+            // item.classList.add('userMess');
+            // item.textContent = input
+            // messages.appendChild(item);
+            // window.scrollTo(0, document.body.scrollHeight);
+
+
             e.preventDefault();
             if (input.value)  {
                 this.socket.emit('chat message', input.value);
@@ -35,25 +45,39 @@ class Chat extends React.Component {
         
         this.socket.on('chat message', function(msg){
             var item = document.createElement('li');
-            item.textContent = msg;
+            item.classList.add('userMess');
+            item.textContent = msg.username + ': ' + msg.text ;
             messages.appendChild(item);
-            window.scrollTo(0, document.body.scrollHeight);
+            messages.scrollTop = messages.scrollHeight;
 
             // Check if input == keyword
             if(msg == keyword){
                 input.disabled = 'true';
             }
         });
+
+        // this.socket.on('disconnect', function() {
+        //     var item = document.createElement('li');
+        //     item.classList.add('userMess');
+        //     item.textContent = "A user has left";
+        //     messages.appendChild(item);
+        //     window.scrollTo(0, document.body.scrollHeight);
+        // });
+        
     }
 
     render() {
         return (
             <div className = "chat">
-                <ul id="messages"></ul>    
+
+                <ul id="messages">
+                    <li> <p style={{color:'rgb(64, 159, 214)'}}> <InfoCircleTwoTone/> Welcome user </p> </li>
+                </ul>  
+
                 <form id="form" action="">
-                    <input id="input" placeholder = "Answer here..." autocomplete="off"/>
-                    <button type="submit">Send</button>
+                    <Input id='input' placeholder='Answer here...' autoComplete='off' />
                 </form>
+
             </div>
         )
     }
