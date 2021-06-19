@@ -5,6 +5,7 @@
 }
 body{
   font-family: 'Muli', sans-serif;
+  
 }
 a {
   text-decoration: none;
@@ -28,6 +29,7 @@ button {
 }
 
 .content {
+    background-color: transparent;
     width: 70%;
     height: 95%;
     margin: 0 auto;
@@ -38,7 +40,10 @@ button {
 }
 
 #canvas1 {
-    background-color : black; 
+    /* background-color : black;  */
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url('https://cdn.dribbble.com/users/722246/screenshots/2105878/attachments/380895/Bays_Nights.jpg') ;
     width: 100%;
     top: 0;
     left: 0;
