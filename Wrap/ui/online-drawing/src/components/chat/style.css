@@ -1,10 +1,14 @@
 .chat {
     width: 600px;
-    height: 190px;
+    height: 170px;
     background-color: white;
-    margin-top: 20px;
     border-radius: 2rem;
-    border-color: rgb(35, 35, 168) ;
+    border-color: rgb(35, 35, 168);
+    box-shadow: 20px 10px 20px rgb(139, 66, 17);
+}
+
+.userMess{
+    color: gray;
 }
 
 #messages {
@@ -19,7 +23,12 @@
     padding: 0;
 }
 
-#messages > li { padding: 0.5rem 1rem; }
+#messages > li {
+    padding: 0.5rem 1rem;
+    /* padding-bottom: 0.5rem; */
+    /* color: rgb(64, 159, 214); */
+    height: 40px;
+}
 #messages > li:nth-child(odd) { background: #efefef; }
 
 form {
@@ -41,8 +50,8 @@ form {
 
 
 #input {
-    width: 85%; 
-    height: 50%; 
+    width: 95%; 
+    height: 80%; 
     border-radius: 5px; 
-    border-color: rgb(60, 137, 189);
+    border-color: rgb(13, 84, 131);
 }
