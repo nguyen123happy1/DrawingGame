@@ -11,6 +11,8 @@ const {Option} = Select
 const { Search } = Input;
 const {Title} = Typography;
 const { Header, Content, Footer } = Layout;
+var title_name= localStorage.getItem("name")? localStorage.getItem("name"): "User";
+var title_id= localStorage.getItem("user_id")? localStorage.getItem("user_id"): "User_id";
 
 const data = [];
 for (let i = 0; i < 100; i++) {
@@ -49,7 +51,7 @@ class Rooms extends React.Component{
           <div>
                 <Header style = {{backgroundColor:'gray'}}>
                   <Avatar size="large" icon={<UserOutlined/>} style={{float: 'left', marginTop:'10px'}} />
-                  <Title level={4} style = {{color:'blue', marginTop: '15px'}}>User</Title>
+                  <Title level={4} style = {{color:'blue', marginTop: '15px'}}>{title_name}<h6>{title_id}</h6></Title>
                 </Header>
 
                 <Content>

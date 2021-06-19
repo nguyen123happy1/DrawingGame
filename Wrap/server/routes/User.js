@@ -38,4 +38,37 @@ router.post('/login', jsonParser, (req, res) => {
 	}
 	
 })
+router.post('/register', jsonParser, (req, res) => {
+	
+	username = req.body.sendUser.username;
+	password = req.body.sendUser.password;
+	console.log("Username: "+ username + " Password: "+password)
+
+	// Simple validation
+	if (!username || !password)
+		return res
+			.status(400)
+			.send({ success: false, message: 'Missing username and/or password' })
+
+    else try {
+				db.getUser.findOne({username: username}).then(data => {
+					if (data){
+						console.log("Multiple username")
+						res.send({
+							success: false, message: "Multiple Username"
+						})
+					}
+					else {db.getUser.insertOne({username:username, password:password},(error,result)=>{
+						res.send({
+							success: true, message: "Completed"
+						})
+					})}
+				})
+				}
+            catch (error) {
+		console.log(error)
+		res.status(500).send({ success: false, message: 'Internal server error' })
+	}
+	
+})
 module.exports = router;
