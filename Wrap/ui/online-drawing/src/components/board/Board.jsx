@@ -11,6 +11,7 @@ class Board extends React.Component {
 
 
     ctx;
+    role;
     isDrawing = false;
 
     constructor(props) {
@@ -32,25 +33,22 @@ class Board extends React.Component {
                     root.isDrawing = false;
                 };
                 image.src = data;
-                console.log(image.src);
             }, 200)
         })
     }
 
     // window.onload
-    componentDidMount() {
-        this.drawOnCanvas();
-    }
 
-    componentWillReceiveProps(newProps) {
-        this.ctx.strokeStyle = newProps.color;
-        this.ctx.lineWidth = newProps.size;
+    componentDidUpdate(prevProps) {
+        console.log("method called");
+        console.log(`Previous Properties is ${prevProps.role}`);
+        this.drawOnCanvas(this.props.role);
     }
 
 
     // Draw
 
-    drawOnCanvas() {
+    drawOnCanvas(currentProps) {
         var canvas = document.querySelector('#board');
         this.ctx = canvas.getContext('2d');
         var ctx = this.ctx;
@@ -86,13 +84,20 @@ class Board extends React.Component {
         ctx.lineCap = 'round';
         ctx.strokeStyle = this.props.color;
 
-        canvas.addEventListener('mousedown', function(e) {
-            canvas.addEventListener('mousemove', onPaint, false);
-        }, false);
+        console.log(`drawOnCanvas: ${currentProps}`);
 
-        canvas.addEventListener('mouseup', function() {
-            canvas.removeEventListener('mousemove', onPaint, false);
-        }, false);
+        if ((currentProps === "user-drawing") ){
+            canvas.addEventListener('mousedown', function(e) {
+                canvas.addEventListener('mousemove', onPaint, false);
+            }, false);
+
+            canvas.addEventListener('mouseup', function() {
+                canvas.removeEventListener('mousemove', onPaint, false);
+            }, false);
+            console.log("You are able to draw!");
+        } else {
+            console.log("You are not allowed to draw!");
+        }
 
         var root = this;
         var onPaint = function() {
@@ -102,7 +107,7 @@ class Board extends React.Component {
             ctx.closePath();
             ctx.stroke();
 
-            if(root.timeout != undefined) clearTimeout(root.timeout);
+            if(root.timeout !== undefined) clearTimeout(root.timeout);
             root.timeout = setTimeout(function(){
                 var base64ImageData = canvas.toDataURL("image/png");
                 root.socket.emit("canvas-data", base64ImageData);
@@ -113,7 +118,7 @@ class Board extends React.Component {
     // Create board
     render() {
         return (
-            <div class="sketch" id="sketch">
+            <div className="sketch" id="sketch">
                 <canvas className="board" id="board"></canvas>
             </div>
         )
