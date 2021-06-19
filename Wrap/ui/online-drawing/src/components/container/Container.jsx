@@ -25,23 +25,23 @@ const Container = () =>
                         <div className="user">
 
                         </div>
-//                         <div class="tools-section">
-//                             <div className="color-picker-container">
-//                                 Select Brush Color : &nbsp; 
-//                                 <input type="color" value={color} onChange={e => setColor(e.target.value)}/>
-//                             </div>
-//                             <div className="brushsize-container">
-//                                 Select Brush Size : &nbsp; 
-//                                 <select value={size} onChange={e => setSize(e.target.value)}>
-//                                     <option> 5 </option>
-//                                     <option> 10 </option>
-//                                     <option> 15 </option>
-//                                     <option> 20 </option>
-//                                     <option> 25 </option>
-//                                     <option> 30 </option>
-//                                 </select>
-//                             </div>
-//                         </div>
+                         <div class="tools-section">
+                             <div className="color-picker-container">
+                                 Select Brush Color : &nbsp; 
+                                 <input type="color" value={color} onChange={e => setColor(e.target.value)}/>
+                             </div>
+                             <div className="brushsize-container">
+                                 Select Brush Size : &nbsp; 
+                                 <select value={size} onChange={e => setSize(e.target.value)}>
+                                     <option> 5 </option>
+                                     <option> 10 </option>
+                                     <option> 15 </option>
+                                     <option> 20 </option>
+                                     <option> 25 </option>
+                                     <option> 30 </option>
+                                 </select>
+                             </div>
+                         </div>
                         {/* BOARD */}
                         <div class="board-container">
                             <Board color={color} size={size}></Board>
@@ -57,7 +57,6 @@ const Container = () =>
             </div>
         </>
     )
-
 }
 
 export default Container
