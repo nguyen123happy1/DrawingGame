@@ -8,7 +8,7 @@ import {TrophyTwoTone, SmileTwoTone, UserOutlined, PlusCircleTwoTone} from '@ant
 
 const onSearch = value => console.log(value);
 
-const {option} = Select
+const {Option} = Select
 const { Search } = Input;
 const {Title} = Typography;
 const { Header, Content, Footer } = Layout;
@@ -144,7 +144,7 @@ class Rooms extends React.Component{
                       <center><h4 style ={{fontSize: '50px', color: 'olive', textAlign:'center', width:'50%', fontFamily:'Comic Sans MS'}}><b> Rooms </b></h4> </center>
                     </div>
 
-                    <List dataSource={data} style={{width:'100%', height:'370px', background:'#5879c7', borderRadius:'60px', overflowY:'scroll', margin:'0 auto'}} renderItem={ item => (
+                    <List dataSource={this.state.data} style={{width:'100%', height:'370px', background:'#5879c7', borderRadius:'60px', overflowY:'scroll', margin:'0 auto'}} renderItem={ item => (
                       
                         <div id='listItem' style={{display:'flex', justifyContent:'center', alignItems:'center', width:'30%', marginRight:'15px', float:'left'}}>
                           <a href='/PlayingScreen' style={{width:'100%', display:'flex', justifyContent:'center', alignItems:'center', margin:'0 auto'}}>
