@@ -1,6 +1,5 @@
 import React from 'react';
 import Login from '../login/Login';
-import Player from '../player/Player';
 import './Playground.css';
 
 import axios from 'axios'
