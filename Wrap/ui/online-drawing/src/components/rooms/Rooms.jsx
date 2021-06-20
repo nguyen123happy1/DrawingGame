@@ -15,6 +15,9 @@ const { Header, Content, Footer } = Layout;
 var title_name= localStorage.getItem("name")? localStorage.getItem("name"): "User";
 var title_id= localStorage.getItem("user_id")? localStorage.getItem("user_id"): "User_id";
 
+const onChangeCap = (values)=>{
+  this.setState({capacity:values});
+}
 const data = [];
  axios.get("http://localhost:5000/room/getroom").then(res=>{
   for (let i = 0; i < res.data.length; i++) {
