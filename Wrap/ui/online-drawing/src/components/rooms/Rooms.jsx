@@ -19,31 +19,31 @@ const onChangeCap = (values)=>{
   this.setState({capacity:values});
 }
 const data = [];
-//  axios.get("http://localhost:5000/room/getroom").then(res=>{
-//   for (let i = 0; i < res.data.length; i++) {
-//     data.push({
-//       key: i,
-//       id: `${i}`,
-//       name: res.data[i].name,
-//       capacity: res.data[i].capacity,
-//       points: res.data[i].points
-//     });
-//   }
-//  })
-
-for (let i = 0; i < 100; i++) {
+ axios.get("http://localhost:5000/room/getroom").then(res=>{
+  for (let i = 0; i < res.data.length; i++) {
     data.push({
       key: i,
       id: `${i}`,
-      name: `Room ${i}`,
-      capacity: i,
-      points: 100
+      name: res.data[i].name,
+      capacity: res.data[i].capacity,
+      points: res.data[i].points
     });
   }
+ })
+
+// for (let i = 0; i < 100; i++) {
+//     data.push({
+//       key: i,
+//       id: `${i}`,
+//       name: `Room ${i}`,
+//       capacity: i,
+//       points: 100
+//     });
+//   }
 
 class Rooms extends React.Component{
 
-  state = { visible: false };
+  state = { visible: false, data: data, search_by_value:'', search_value:''};
 
   showDrawer = () => {
     this.setState({
@@ -57,14 +57,51 @@ class Rooms extends React.Component{
     });
   };
 
+  onSearch = ()=>{
+    let link = "";
+    
+    if (this.state.search_by_value=="id") link = "http://localhost:5000/room/getroombyid";
+    else if (this.state.search_by_value=="name") link = "http://localhost:5000/room/getroombyname";
+    
+    var datab = [];
+            axios.get((link), {params:{word:this.state.search_value}}).then(res=>{
+              alert(res.data.length)
+             for (let i = 0; i < res.data.length; i++) {
+               
+               datab.push({
+                 key: i,
+                 id: `${i}`,
+                 name: res.data[i].name,
+                 capacity: res.data[i].capacity,
+                 points: res.data[i].points
+               });
+
+             }
+             this.setState({data: datab})
+            })
+            
+  }
   onSubmit = () => {
 
     axios.post("http://localhost:5000/room/addroom",{roomName:document.getElementById("roomName").value,capacity:document.getElementById("players").value,points: document.getElementById("points").value }).then(res=>{
           if (res.data.success==true){
-          window.location.href = "/roomscreen";
+            var datab = [];
+            axios.get("http://localhost:5000/room/getroom").then(res=>{
+             for (let i = 0; i < res.data.length; i++) {
+               datab.push({
+                 key: i,
+                 id: `${i}`,
+                 name: res.data[i].name,
+                 capacity: res.data[i].capacity,
+                 points: res.data[i].points
+               });
+             }
+            })
+            this.setState({data: datab})
           }
     })
   }
+
 
   logout(e){
     localStorage.removeItem("user_id");
@@ -91,11 +128,17 @@ class Rooms extends React.Component{
                     <div style = {{height: '13%'}}>
 
                       <div style={{backgroundColor:'white', float:'left', marginLeft: '50px', marginTop: '30px', display:'flex', justifyContent:'center', alignItems:'center'}}>
-                        <Select style={{width:'120px'}}>
-                          <option >Room name</option>
-                          <option >Room ID</option>
+                      <Select style={{width:'120px'}}onChange={value => {
+                this.setState({search_by_value:value});
+                
+              }}>
+                          <Option value="name">Room name</Option>
+                          <Option value="id" >Room ID</Option>
                         </Select>
-                        <Search placeholder="search..." style={{ width: '150px' }} allowClear onSearch={onSearch} />
+                        <Search placeholder="search..." style={{ width: '150px' }} allowClear onSearch={this.onSearch} onChange={e =>{
+                          this.setState({search_value:e.target.value});
+                        }} />
+
                       </div>
 
                       <center><h4 style ={{fontSize: '50px', color: 'olive', textAlign:'center', width:'50%', fontFamily:'Comic Sans MS'}}><b> Rooms </b></h4> </center>

@@ -14,6 +14,24 @@ router.get('/getroom',(req,res)=>{
     
 })
 
+router.get('/getroombyname',(req,res)=>{
+   var word = req.query.word;
+   db.getRoom.find({name:word}).toArray(function(err,result){
+	   if (err)throw err;
+	   res.send(result);
+   })
+  
+})
+router.get('/getroombyid',(req,res)=>{
+   var word = req.query.word;
+   db.getRoom.find({_id:word}).toArray(function(err,result){
+	   if (err)throw err;
+	   res.send(result);
+   })
+  
+})
+
+
 router.post('/addroom', jsonParser, (req, res) => {
 	
 	roomName=req.body.roomName;
